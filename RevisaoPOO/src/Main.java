@@ -7,13 +7,25 @@ public class Main {
 	maria.setCourse("Engenharia Química");
 	maria.setSemester((short)4);
 	
-	Student jose = new Student(2, 1000);
-	jose.setName("Jose");
-	jose.setBirthDate("15/12/2001");
-	jose.setCourse("Engenharia de Produção");
-	jose.setSemester((short)8);
+	Professor emerson = new Professor(2, "217");
+	emerson.setName("Emerson");
+	emerson.setLevel("Doutor");
+	emerson.setArea("Informática");
 	
-	System.out.println(maria.toString()+ "\n" + maria.formatPersonalData());
-	System.out.println(jose.toString()+ "\n" + jose.formatPersonalData());	
+	AT ju = new AT(3, "891");
+	ju.setName("Juliana");
+	ju.setArea("TI");
+	ju.setRole("Técnica em laboratório");
+	
+	
+	printUserData(maria);
+	printUserData(emerson);
+	printUserData(ju);
+		
 	}
+		
+	private static void printUserData(User user) {
+		System.out.println(user.formatPersonalData());
+	}
+	
 }
