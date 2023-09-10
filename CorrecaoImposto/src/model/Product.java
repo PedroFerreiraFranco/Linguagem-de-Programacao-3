@@ -7,13 +7,16 @@ public class Product {
 	private String name;
 	private double costPrice;
 	private double profit;
+    private boolean industrialized = false;
+    private String imported;
 	private List<Tax> taxes;
 	
-	public Product(String name, double costPrice, double profit) throws Exception{
+	public Product(String name, double costPrice, double profit, String imported) throws Exception{
 		setName(name);
 		setCostPrice(costPrice);
 		setProfit(profit);
-		this.taxes = new ArrayList<Tax>();
+	    this.imported = imported;
+	    this.taxes = new ArrayList<Tax>();
 	}
 	
 	public boolean addTax(Tax tax) throws Exception{
@@ -21,10 +24,16 @@ public class Product {
 		if(tax == null)
 			throw new Exception("Imposto não pode ser nulo");
 		
-		if(taxes.contains(tax))
-			return false;
-		else taxes.add(tax);
+		if(taxes.contains(tax)) {
+			return false;			
+		}
 		
+		else{
+			if(tax.getAbbr().equals("IPI"))
+				industrialized = true;
+			
+			taxes.add(tax);
+		}	
 		return true;
 	}
 	
@@ -73,5 +82,17 @@ public class Product {
 	
 	public String getName() {
 		return  this.name;
+	}
+	
+	public double getProfit() {
+		return this.profit;
+	}
+	
+	public String getImported() {
+		return imported;
+	}
+
+	public boolean getIndustrialized() {
+		return industrialized;
 	}
 }
