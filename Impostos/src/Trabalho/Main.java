@@ -8,7 +8,6 @@ public class Main {
 		Produtos produto = new Produtos();
 		Impostos imoposto = new Impostos();
 		int opImpostos;
-		double taxa=0;
 		
 		System.out.print("Digite o nome do produto: ");
         String nomeProduto = scanner.nextLine();
@@ -37,8 +36,8 @@ public class Main {
         System.out.println("Taxa acumulada: " + imoposto.getTaxa());
 		
 		double precoFinal = produto.calcularPrecoFinal(imoposto);
-		System.out.println("\nO preço final do produto " 
-		+ produto.getNomeProduto() + " é: R$" + precoFinal);
+		System.out.printf("\nO preço final do produto " 
+		+ produto.getNomeProduto() + " é: R$%.2f" , precoFinal);
 		
 	}
 }
